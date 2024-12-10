@@ -6,7 +6,7 @@ from fillpdf import fillpdfs
 import io
 import tempfile
 
-app = Flask(__name__, template_folder='../templates', static_folder='../static')
+app = Flask(__name__, template_folder='/templates', static_folder='/static')
 app.secret_key = 'your_secret_key_here'  # Required for flash messages
 
 def sanitize_filename(filename):
