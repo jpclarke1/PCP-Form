@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E6EAE6;
+            padding: 20px;
+            color: #1C8B93;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #FEFEFE;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        a {
+            color: #1C8B93;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>File Created Successfully!</h1>
+        <p>Your file has been saved to your default Downloads folder as <strong>{{ file_name }}</strong>.</p>
+        <p>Please press the button below to process a new request.</p>
+        <p><a href="/">Go Back</a></p>
+    </div>
+</body>
+</html>

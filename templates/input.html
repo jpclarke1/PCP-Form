@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PCP Change Form Automation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E6EAE6;
+            margin: 0;
+            padding: 20px;
+            color: #1C8B93;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FEFEFE;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #D29D3A;
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #D29D3A;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        button {
+            background-color: #1C8B93;
+            color: #FEFEFE;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #D29D3A;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 400px;
+        }
+        .flash-message {
+            background-color: #FFE6E6;
+            color: #D8000C;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #D8000C;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('excelInput').focus();
+            document.getElementById('excelInput').addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    document.getElementById('inputForm').submit();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <!-- Reference the logo in the static folder using Flask's url_for -->
+        <img src="{{ url_for('static', filename='logos.png') }}" alt="Logos" class="logo">
+        <h1>Paste PCP Change</h1>
+        <form id="inputForm" method="POST" action="/process">
+            <textarea id="excelInput" name="excel_row" rows="4" placeholder="Paste your Excel row here" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
